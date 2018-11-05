@@ -8,6 +8,19 @@
 #
 
 library(shiny)
+library(tidyverse)
+library(readxl)
+library(janitor)
+library(dplyr)
+library(stringr)
+
+nzwine<-read_excel("Summary_of_NZ_Wines.xlsx")
+nzwine = t(nzwine)
+nzwine %>% 
+  clean_names()
+nzwine
+glimpse(nzwine)
+ggplot(nzwine, aes(x=`X__1`, y=`"Number of wineries"`)) + geom_line()
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
